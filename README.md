@@ -22,5 +22,9 @@ docker exec 12b12a6779981f8a104e0c082a20f8591d259a98d50f52e62a9256c1e694c438 php
 
 - **anche per installare package o altro è consigliabile farlo sul container (per questioni di versioni php, etc...) in questo modo sarà il container che allinea la macchina locale.**
 
+- **infine, sulla macchina locale lanciare i comandi: (per installare npm e vue)**
+ - npm install
+ - npm install vue 
+
 
 
