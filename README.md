@@ -26,5 +26,13 @@ docker exec 12b12a6779981f8a104e0c082a20f8591d259a98d50f52e62a9256c1e694c438 php
  - npm install
  - npm install vue 
 
+- **andare sul browser: http://localhost:8080**
+
+## ECCEZIONI:
+
+Se si dovesse ricevere l'errore: *Warning: require(/var/www/html/public/../vendor/autoload.php): failed to open stream: No such file or directory in /var/www/html/public/index.php on line 34* 
+Entrare nel terminale del container e lanciare il comando **composer install**, poichè vuol dire che per qualche motivo lo script nel Dockerfile non è stato eseguito
+
+
 
 
