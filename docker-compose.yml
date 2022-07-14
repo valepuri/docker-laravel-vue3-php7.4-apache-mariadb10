@@ -1,0 +1,37 @@
+version: '3.8'
+
+services: 
+
+  #PHP CONTAINER - il parametro puo avere il nome che voglio
+  application:
+    build:
+      context: .
+      dockerfile: .docker/Dockerfile
+    ports:
+      - 8080:80
+    volumes:
+      - ./:/var/www/html
+    depends_on: 
+        - databasecustom
+
+  #DATABASE CONTAINER server - il parametro puo avere il nome che voglio
+  databasecustom: 
+    image: mariadb:10.7.4
+    ports:
+      #porta esposta dal container (questa per connettermi dal mio computer locale) : porta per connessione al db del container (importante che rimanga 3306 nel container)
+      - 33061:3306
+    environment: 
+      - MYSQL_DATABASE=${DB_DATABASE}
+      - MYSQL_USER=${DB_USERNAME}
+      - MYSQL_PASSWORD=${DB_USERNAME}
+      - MYSQL_ROOT_PASSWORD=${DB_PASSWORD}
+    volumes:
+      #specifico che i dati verranno memorizzati in db-data localmente e in var/lib/mysql sul container
+      - db-data:/var/lib/mysql
+
+
+
+#questo serve per salvare tutti i dati della macchina DB, poichè ad ogni down vengono cancellati
+volumes: 
+  #puo avere il nome che voglio io
+  db-data: ~
